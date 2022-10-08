@@ -27,7 +27,8 @@
                 <div class="logo">
                     <img src="./img/BisLite-logo.png" alt="logo">
                 </div>
-                <div class="nav_bar">
+
+                <div class="nav_bar" id="showToggle">
                     <ul>
                         <li><a href="#">HOME</a></li>
                         <li><a href="#">ABOUT US</a></li>
@@ -56,6 +57,38 @@
                         <li><a href="#">CONTACT US</a></li>
                     </ul>
                 </div>
+                <input type="checkbox"  id="toggle_button"><i class="fa fa-align-justify"></i>
+                <label>
+                    <div>
+                        <ul>
+                            <li><a href="#">HOME</a></li>
+                            <li><a href="#">ABOUT US</a></li>
+                            <li class="services">SERVICES <span><i class="fa fa-angle-down"></i>
+                                    <div class="services_dropdown">
+                                        <div class="services_content_dropdown">
+                                            <a href="#">Web Design</a>
+                                            <a href="#">Wordpress Design</a>
+                                            <a href="#">Mobile App Development</a>
+                                            <a href="#">Internet Marketing</a>
+                                            <a class="border_bottom" href="#">Social Media Management</a>
+                                        </div>
+                            </li>
+                            <li class="portfolio">PORFOLIO <span><i class="fa fa-angle-down"></i></span>
+                                <div class="portfolio_dropdown">
+                                    <div class="portfolio_content_dropdown">
+                                        <a href="#">Web Design</a>
+                                        <a href="#">Wordpress Design</a>
+                                        <a href="#">Mobile App Development</a>
+                                        <a href="#">Internet Marketing</a>
+                                        <a class="border_bottom" href="#">Social Media Management</a>
+                                    </div>
+                                </div>
+                            </li>
+                            <li><a href="#">BLOG</a></li>
+                            <li><a href="#">CONTACT US</a></li>
+                        </ul>
+                    </div>
+                </label>
             </div>
         </div>
     </header>
@@ -242,7 +275,11 @@
             <div class="social_testimonials">
                 <div class="social_testimonials_content">
                     <h1><i class="social_icon fa fa-sms"></i> TESTOMINIALS</h1>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam ducimus amet rem fugiat! Maxime dolor eius corporis delectus, atque numquam nisi commodi quasi mollitia, obcaecati consequatur illo molestias est? Placeat reiciendis provident suscipit atque exercitationem culpa, sapiente quasi harum a natus velit animi. Quis, fuga dolores! Necessitatibus, neque architecto. Soluta?.</p><br><br>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam ducimus amet rem fugiat! Maxime
+                        dolor eius corporis delectus, atque numquam nisi commodi quasi mollitia, obcaecati consequatur
+                        illo molestias est? Placeat reiciendis provident suscipit atque exercitationem culpa, sapiente
+                        quasi harum a natus velit animi. Quis, fuga dolores! Necessitatibus, neque architecto. Soluta?.
+                    </p><br><br>
                     <i><b>John Travis, CEO, DomainName.com</b></i>
                 </div>
 
@@ -265,7 +302,9 @@
                 </div>
             </div>
             <div class="social_download">
-                <span class="social_content">This is a clean and modern, four column website PSD template. You can code it into a Wordpress website, HTML5 responsive website for your personal or client works. So ahead and download this wonderful PSD template! </span>
+                <span class="social_content">This is a clean and modern, four column website PSD template. You can code
+                    it into a Wordpress website, HTML5 responsive website for your personal or client works. So ahead
+                    and download this wonderful PSD template! </span>
 
                 <div class="social_button">
                     <button><a href="#"><i class="fa fa-download"></i> DOWNLOAD PSD</a></button>
@@ -278,7 +317,10 @@
             <div class="footer_group">
                 <div class="about_us">
                     <h1>ABOUT US</h1>
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Minus eius dolore, odio voluptas voluptatum quos ipsa ipsum officia nemo vero consequuntur amet necessitatibus dolor consequatur consectetur sequi aspernatur provident sed expedita nostrum, dignissimos voluptatem, incidunt inventore. Soluta dicta quasi voluptas.</p>
+                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Minus eius dolore, odio voluptas
+                        voluptatum quos ipsa ipsum officia nemo vero consequuntur amet necessitatibus dolor consequatur
+                        consectetur sequi aspernatur provident sed expedita nostrum, dignissimos voluptatem, incidunt
+                        inventore. Soluta dicta quasi voluptas.</p>
                 </div>
                 <div class="explore">
                     <h1>EXPLORE</h1>
@@ -325,7 +367,8 @@
             </div>
             <div class="footer_end">
                 <div class="footer_copyright">
-                    <p>© Copyright 2021. All right reserved. <br>Lorem ipsum dolor sit amet consectetur adipisicing elit. A, incidunt.</p>
+                    <p>© Copyright 2021. All right reserved. <br>Lorem ipsum dolor sit amet consectetur adipisicing
+                        elit. A, incidunt.</p>
                 </div>
                 <div class="footer_logo">
                     <img src="../Fastcoding/img/BisLite-logo.png" alt="#">
@@ -365,6 +408,23 @@
         slides[slideIndex - 1].style.display = "block";
         dots[slideIndex - 1].className += " active";
     }
+    function showToggle(){
+        const navs = document.getElementById('toggle_button');
+        const navsShow = document.getElementById('showToggle')
+        console.log(navs.Selected)
+        if(navs.Selected === true){
+            navsShow.className +=' nav_bar_show'
+            navsShow.className -= 'nav_bar'
+        }else{
+            navsShow.className -=' nav_bar_show'
+            navsShow.className += 'nav_bar'
+        }
+        if(navs.Selected === false){
+            navsShow.className -=' nav_bar_show'
+            navsShow.className += ' nav_bar'
+        }
+    }
+
 </script>
 
 </html>
