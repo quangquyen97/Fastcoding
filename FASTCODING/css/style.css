@@ -38,23 +38,29 @@ header .header_content {
   justify-content: space-between;
   align-items: center;
 }
-header .header_content .nav_bar {
+header .header_content .nav_bar,
+header .header_content .nav_bar_show {
   align-items: center;
 }
-header .header_content .nav_bar ul {
+header .header_content .nav_bar ul,
+header .header_content .nav_bar_show ul {
   padding: 40px 0;
 }
-header .header_content .nav_bar ul .services_dropdown {
+header .header_content .nav_bar ul .services_dropdown,
+header .header_content .nav_bar_show ul .services_dropdown {
   display: inline-block;
 }
-header .header_content .nav_bar ul .portfolio_dropdown {
+header .header_content .nav_bar ul .portfolio_dropdown,
+header .header_content .nav_bar_show ul .portfolio_dropdown {
   display: inline-block;
 }
-header .header_content .nav_bar ul .portfolio a {
+header .header_content .nav_bar ul .portfolio a,
+header .header_content .nav_bar_show ul .portfolio a {
   padding: 10px 7px;
   display: block;
 }
-header .header_content .nav_bar li {
+header .header_content .nav_bar li,
+header .header_content .nav_bar_show li {
   cursor: pointer;
   padding: 0px 15px;
   display: flex;
@@ -63,24 +69,54 @@ header .header_content .nav_bar li {
   align-items: center;
   border-top: 4px solid transparent;
 }
-header .header_content .nav_bar li.services:hover, header .header_content .nav_bar li.portfolio:hover {
+header .header_content .nav_bar li.services:hover, header .header_content .nav_bar li.portfolio:hover,
+header .header_content .nav_bar_show li.services:hover,
+header .header_content .nav_bar_show li.portfolio:hover {
   background-color: white;
   border-top: 4px solid #2baaca;
   padding: 6px 15px;
 }
 header .header_content .nav_bar li.services:hover .services_content_dropdown,
 header .header_content .nav_bar li.services:hover .portfolio_content_dropdown, header .header_content .nav_bar li.portfolio:hover .services_content_dropdown,
-header .header_content .nav_bar li.portfolio:hover .portfolio_content_dropdown {
+header .header_content .nav_bar li.portfolio:hover .portfolio_content_dropdown,
+header .header_content .nav_bar_show li.services:hover .services_content_dropdown,
+header .header_content .nav_bar_show li.services:hover .portfolio_content_dropdown,
+header .header_content .nav_bar_show li.portfolio:hover .services_content_dropdown,
+header .header_content .nav_bar_show li.portfolio:hover .portfolio_content_dropdown {
   display: block;
   opacity: 1;
   border-bottom: 4px solid #2baaca;
 }
-header .header_content .nav_bar li a {
+header .header_content .nav_bar li a,
+header .header_content .nav_bar_show li a {
   font-size: 1rem;
   color: black;
 }
-header .header_content .nav_bar li i {
+header .header_content .nav_bar li i,
+header .header_content .nav_bar_show li i {
   font-size: 0.8rem;
+}
+header .header_content .nav_bar_show .services_content_dropdown {
+  position: absolute;
+  left: 100px;
+  top: -50px;
+}
+header .header_content .nav_bar_show .portfolio_content_dropdown {
+  position: absolute;
+  left: 100px;
+  top: -80px;
+}
+header .header_content .nav_bar_show.services:hover, header .header_content .nav_bar_show.portfolio:hover {
+  background-color: white;
+  border-left: 4px solid #2baaca;
+  padding: 6px 15px;
+}
+header .header_content .nav_bar_show.services:hover .services_content_dropdown,
+header .header_content .nav_bar_show.services:hover .portfolio_content_dropdown, header .header_content .nav_bar_show.portfolio:hover .services_content_dropdown,
+header .header_content .nav_bar_show.portfolio:hover .portfolio_content_dropdown {
+  display: block;
+  opacity: 1;
+  border-right: 4px solid #2baaca;
 }
 header .header_content .services_content_dropdown {
   display: none;
@@ -156,12 +192,6 @@ header .header_content .portfolio_content_dropdown a:hover {
 .carousel_title h1 {
   font-size: 4.5rem;
   color: white;
-}
-.carousel_img {
-  display: flex;
-  width: 80%;
-  align-items: center;
-  max-width: 100%;
 }
 .carousel_cafe {
   width: 30%;
@@ -490,7 +520,9 @@ footer .footer_end {
 
 @media only screen and (min-width: 0px) {
   header .header_content {
-    position: relative;
+    position: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
   header .header_content .logo {
     margin-left: -10%;
@@ -500,29 +532,38 @@ footer .footer_end {
   header .header_content .nav_bar_show {
     display: block;
     z-index: 12;
+    margin-left: -10%;
+  }
+  header .header_content .nav_bar_show ul li {
+    width: 100px;
   }
   header .header_content .nav_bar {
-    margin-left: -10%;
     display: none;
   }
-  header .header_content #toggle_button {
+  header .header_content .btn {
     position: absolute;
-    right: 0;
-    top: 10px;
-    background-color: #81e4ed;
+    background-color: #2baaca;
     border: none;
     border-radius: 5px;
+    padding: 6px;
+    right: 17px;
+    top: 20px;
   }
-  header .header_content #toggle_button i {
-    font-size: 30px;
+  header .header_content .btn i {
     color: white;
-    padding: 10px;
+    font-size: 2rem;
   }
-  header .header_content #toggle_button label {
-    display: none;
+  header .header_content .btn_active {
+    background-color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 6px;
+    right: 17px;
+    top: 20px;
   }
-  header .header_content #toggle_button:checked label {
-    display: block;
+  header .header_content .btn_active i {
+    color: #2baaca;
+    font-size: 2rem;
   }
   .info_group {
     flex-wrap: wrap;
@@ -530,6 +571,38 @@ footer .footer_end {
   .info_item {
     padding: 0;
     padding-top: 16px;
+  }
+  .carousel .carousel_background {
+    display: flex;
+    padding: 0 5px;
+  }
+  .carousel_img {
+    width: 70%;
+    display: flex;
+  }
+  .carousel_cafe {
+    width: 35%;
+    height: auto;
+  }
+  .carousel_mess {
+    width: auto;
+    height: auto;
+    margin-top: -10%;
+  }
+  .carousel_content_group {
+    padding-top: 15px;
+  }
+  .carousel_title {
+    width: 30%;
+  }
+  .carousel_title h1 {
+    font-size: 3rem;
+  }
+  .social_lastestwork_img {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin: auto;
   }
   .social_testimonials {
     flex-wrap: wrap;
@@ -554,9 +627,11 @@ footer .footer_end {
   footer .footer_group .about_us,
 footer .footer_group .explore,
 footer .footer_group .browse,
-footer .footer_group .contact_us,
-footer .footer_group .connect {
+footer .footer_group .contact_us, footer .footer_group .connect {
     width: 100%;
+  }
+  footer .footer_group .connect_group_img {
+    background-size: contain;
   }
   footer .footer_end {
     flex-wrap: wrap-reverse;
@@ -569,22 +644,20 @@ footer .footer_group .connect {
 @media only screen and (min-width: 1024px) {
   header .header_content {
     display: flex;
+    flex-direction: row;
   }
   header .header_content .logo {
     margin-left: 0;
   }
   header .header_content .nav_bar {
     display: flex;
+    flex-direction: row;
   }
   header .header_content .nav_bar ul {
     display: grid;
     grid-template-columns: auto auto auto auto auto auto;
   }
-  header .header_content .toggle_button {
-    display: none;
-  }
-  header .header_content input:checked,
-header .header_content label {
+  header .header_content #btnShowToggle {
     display: none;
   }
   .info_group {
@@ -592,6 +665,33 @@ header .header_content label {
   }
   .info_item {
     padding: 50px 0;
+  }
+  .carousel_background {
+    display: flex;
+    width: 100%;
+    overflow: hidden;
+    justify-content: center;
+    background-color: #df5936;
+    padding: 0 50px;
+    align-items: center;
+  }
+  .carousel_title {
+    width: 30%;
+    align-self: center;
+  }
+  .carousel_title h1 {
+    font-size: 4.5rem;
+    color: white;
+  }
+  .carousel_cafe {
+    width: 30%;
+  }
+  .carousel_mess {
+    width: max-content;
+    margin: 0;
+  }
+  .carousel_content_group {
+    padding-top: 15px;
   }
   .social_testimonials {
     flex-wrap: nowrap;
