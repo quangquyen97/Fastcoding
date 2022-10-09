@@ -56,39 +56,8 @@
                         <li><a href="#">BLOG</a></li>
                         <li><a href="#">CONTACT US</a></li>
                     </ul>
-                </div>
-                <input type="checkbox"  id="toggle_button"><i class="fa fa-align-justify"></i>
-                <label>
-                    <div>
-                        <ul>
-                            <li><a href="#">HOME</a></li>
-                            <li><a href="#">ABOUT US</a></li>
-                            <li class="services">SERVICES <span><i class="fa fa-angle-down"></i>
-                                    <div class="services_dropdown">
-                                        <div class="services_content_dropdown">
-                                            <a href="#">Web Design</a>
-                                            <a href="#">Wordpress Design</a>
-                                            <a href="#">Mobile App Development</a>
-                                            <a href="#">Internet Marketing</a>
-                                            <a class="border_bottom" href="#">Social Media Management</a>
-                                        </div>
-                            </li>
-                            <li class="portfolio">PORFOLIO <span><i class="fa fa-angle-down"></i></span>
-                                <div class="portfolio_dropdown">
-                                    <div class="portfolio_content_dropdown">
-                                        <a href="#">Web Design</a>
-                                        <a href="#">Wordpress Design</a>
-                                        <a href="#">Mobile App Development</a>
-                                        <a href="#">Internet Marketing</a>
-                                        <a class="border_bottom" href="#">Social Media Management</a>
-                                    </div>
-                                </div>
-                            </li>
-                            <li><a href="#">BLOG</a></li>
-                            <li><a href="#">CONTACT US</a></li>
-                        </ul>
-                    </div>
-                </label>
+                </div>    
+                <button class="btn_active btn" onclick="showToggle()" id="btnShowToggle"><i class="fa fa-align-justify"></i></button>            
             </div>
         </div>
     </header>
@@ -409,22 +378,19 @@
         dots[slideIndex - 1].className += " active";
     }
     function showToggle(){
-        const navs = document.getElementById('toggle_button');
-        const navsShow = document.getElementById('showToggle')
-        console.log(navs.Selected)
-        if(navs.Selected === true){
-            navsShow.className +=' nav_bar_show'
-            navsShow.className -= 'nav_bar'
-        }else{
-            navsShow.className -=' nav_bar_show'
-            navsShow.className += 'nav_bar'
-        }
-        if(navs.Selected === false){
-            navsShow.className -=' nav_bar_show'
-            navsShow.className += ' nav_bar'
+        const showToggle = document.getElementById('showToggle').classList;
+        const btnShowToggle = document.getElementById('btnShowToggle').classList
+        console.log(showToggle)
+        if(showToggle.value === 'nav_bar'){
+            showToggle.remove('nav_bar')
+            showToggle.add('nav_bar_show')
+            btnShowToggle.add('btn_active')
+        }else if(showToggle.value === 'nav_bar_show'){
+            showToggle.remove('nav_bar_show')
+            showToggle.add('nav_bar')
+            btnShowToggle.remove('btn_active')
         }
     }
-
 </script>
 
 </html>

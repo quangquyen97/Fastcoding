@@ -44,7 +44,8 @@ header {
         justify-content: space-between;
         align-items: center;
 
-        .nav_bar {
+        .nav_bar,
+        .nav_bar_show {
             align-items: center;
 
             ul {
@@ -103,6 +104,38 @@ header {
 
                 i {
                     font-size: 0.8rem;
+                }
+            }
+        }
+
+        .nav_bar_show {
+            .services_content_dropdown {
+                position: absolute;
+                left: 100px;
+                top: -50px;
+
+            }
+
+            .portfolio_content_dropdown {
+                position: absolute;
+                left: 100px;
+                top: -80px;
+            }
+
+            &.services,
+            &.portfolio {
+                &:hover {
+                    background-color: white;
+                    border-left: 4px solid #2baaca;
+                    padding: 6px 15px;
+
+                    .services_content_dropdown,
+                    .portfolio_content_dropdown {
+                        display: block;
+                        opacity: 1;
+                        border-right: 4px solid #2baaca;
+                    }
+
                 }
             }
         }
@@ -191,13 +224,6 @@ header {
             font-size: 4.5rem;
             color: white;
         }
-    }
-
-    &_img {
-        display: flex;
-        width: 80%;
-        align-items: center;
-        max-width: 100%;
     }
 
     &_cafe {
@@ -604,7 +630,9 @@ footer {
 @media only screen and (min-width: 0px) {
     header {
         .header_content {
-            position: relative;
+            position: flex;
+            flex-direction: column;
+            justify-content: space-between;
 
             .logo {
                 margin-left: -10%;
@@ -615,36 +643,49 @@ footer {
             .nav_bar_show {
                 display: block;
                 z-index: 12;
-            }
-
-            .nav_bar {
                 margin-left: -10%;
-                display: none;
-            }
 
-            #toggle_button {
-                position: absolute;
-                right: 0;
-                top: 10px;
-                background-color: #81e4ed;
-                border: none;
-                border-radius: 5px;
-
-                i {
-                    font-size: 30px;
-                    color: white;
-                    padding: 10px;
+                ul {
+                    li {
+                        width: 100px;
+                    }
                 }
 
             }
 
-            #toggle_button label {
+            .nav_bar {
                 display: none;
             }
 
-            #toggle_button:checked label {
-                display: block;
+            .btn {
+                position: absolute;
+                background-color: #2baaca;
+                border: none;
+                border-radius: 5px;
+                padding: 6px;
+                right: 17px;
+                top: 20px;
+
+                i {
+                    color: white;
+                    font-size: 2rem;
+                }
             }
+
+            .btn_active {
+                background-color: white;
+                border: none;
+                border-radius: 5px;
+                padding: 6px;
+                right: 17px;
+                top: 20px;
+
+                i {
+                    color: #2baaca;
+                    font-size: 2rem;
+                }
+            }
+
         }
     }
 
@@ -657,7 +698,50 @@ footer {
         padding-top: 16px;
     }
 
+    .carousel {
+        .carousel_background {
+            display: flex;
+            padding: 0 5px;
+
+        }
+
+        &_img {
+            width: 70%;
+            display: flex;
+        }
+
+        &_cafe {
+            width: 35%;
+            height: auto;
+        }
+
+        &_mess {
+            width: auto;
+            height: auto;
+            margin-top: -10%;
+        }
+
+        &_content_group {
+            padding-top: 15px;
+        }
+
+        &_title {
+            width: 30%;
+
+            h1 {
+                font-size: 3rem;
+            }
+        }
+    }
+
     .social {
+        &_lastestwork_img{
+            display: flex;
+            flex-wrap: wrap;
+            // padding: 5px;
+            justify-content: space-around;
+            margin: auto;
+        }
         &_testimonials {
 
             &_content,
@@ -692,9 +776,12 @@ footer {
                 .about_us,
                 .explore,
                 .browse,
-                .contact_us,
-                .connect {
+                .contact_us,.connect
+                 {
                     width: 100%;
+                }
+                .connect_group_img{
+                    background-size: contain;
                 }
             }
 
@@ -708,12 +795,14 @@ footer {
             }
         }
     }
+
 }
 
 @media only screen and (min-width: 1024px) {
     header {
         .header_content {
             display: flex;
+            flex-direction: row;
 
             .logo {
                 margin-left: 0;
@@ -721,6 +810,7 @@ footer {
 
             .nav_bar {
                 display: flex;
+                flex-direction: row;
 
                 ul {
                     display: grid;
@@ -728,14 +818,8 @@ footer {
                 }
             }
 
-            .toggle_button {
-                display: none
-            }
-
-            input:checked,
-            label {
+            #btnShowToggle {
                 display: none;
-
             }
         }
     }
@@ -746,6 +830,43 @@ footer {
 
     .info_item {
         padding: 50px 0;
+    }
+
+    .carousel {
+
+        &_background {
+            display: flex;
+            width: 100%;
+            overflow: hidden;
+            justify-content: center;
+            background-color: #df5936;
+            padding: 0 50px;
+            align-items: center;
+        }
+
+        &_title {
+            width: 30%;
+            align-self: center;
+
+            h1 {
+                font-size: 4.5rem;
+                color: white;
+            }
+        }
+
+        &_cafe {
+            width: 30%;
+        }
+
+        &_mess {
+            width: max-content;
+            margin: 0;
+        }
+
+        &_content_group {
+            padding-top: 15px;
+        }
+
     }
 
     .social {
